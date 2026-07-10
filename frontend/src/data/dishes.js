@@ -1,26 +1,31 @@
-export const dishes = [
+import bacalhauImage from "../assets/images/menu-bacalhau.avif";
+import polvoImage from "../assets/images/menu-polvo.avif";
+import sobremesaImage from "../assets/images/menu-sobremesa.avif";
+
+export const featuredDishes = [
   {
+    id: 1,
     name: "Bacalhau Macieira",
-    category: "Prato Principal",
+    category: "Principal",
     price: "38€",
-    image:
-      "https://images.unsplash.com/photo-1559847844-5315695dadae?q=80&w=1200&auto=format&fit=crop",
-    desc: "Bacalhau confitado, puré de grão, azeite de ervas e crocante de broa.",
+    description: "Bacalhau confitado, grão, broa e azeite de ervas.",
+    image: bacalhauImage,
+    featured: true,
   },
   {
+    id: 2,
     name: "Polvo à Brasa",
-    category: "Prato Principal",
+    category: "Principal",
     price: "42€",
-    image:
-      "https://images.unsplash.com/photo-1542528180-a1208c5169a5?q=80&w=1200&auto=format&fit=crop",
-    desc: "Polvo atlântico na brasa, batata a murro, alho assado e emulsão de pimento.",
+    description: "Polvo atlântico, batata a murro e pimento assado.",
+    image: polvoImage,
   },
   {
-    name: "Novilho Maturado",
-    category: "Especialidade",
-    price: "55€",
-    image:
-      "https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=1200&auto=format&fit=crop",
-    desc: "Lombo de novilho maturado, redução de vinho do Porto e legumes da estação.",
+    id: 3,
+    name: "Pera Rocha",
+    category: "Sobremesa",
+    price: "14€",
+    description: "Pera, vinho do Porto e especiarias.",
+    image: sobremesaImage,
   },
 ];

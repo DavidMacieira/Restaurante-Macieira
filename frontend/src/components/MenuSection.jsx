@@ -1,54 +1,111 @@
-import { dishes } from "../data/dishes";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { featuredDishes } from "../data/dishes";
+
+function DishInformation({ dish }) {
+  return (
+    <div>
+      <p className="mb-3 text-[0.65rem] uppercase tracking-[0.35em] text-[#B08D57]">
+        {dish.category}
+      </p>
+
+      <div className="flex items-start justify-between gap-6">
+        <h3 className="font-serif text-3xl leading-tight text-[#121212]">
+          {dish.name}
+        </h3>
+
+        <span className="shrink-0 font-serif text-2xl text-[#B08D57]">
+          {dish.price}
+        </span>
+      </div>
+
+      <p className="mt-4 max-w-md leading-relaxed text-black/55">
+        {dish.description}
+      </p>
+    </div>
+  );
+}
 
 function MenuSection() {
+  const [mainDish, ...secondaryDishes] = featuredDishes;
+
   return (
-    <section id="menu" className="bg-white px-6 md:px-10 py-28">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-[#B08D57] uppercase tracking-[0.4em] text-xs mb-5">
-            Menu
-          </p>
+    <section id="menu" className="bg-white px-6 py-24 md:px-10 md:py-32">
+      <div className="mx-auto max-w-7xl">
+        <motion.header
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8 }}
+          className="mb-14 flex flex-col gap-8 border-b border-black/10 pb-10 md:flex-row md:items-end md:justify-between"
+        >
+          <div>
+            <p className="mb-5 text-xs uppercase tracking-[0.45em] text-[#B08D57]">
+              À LA CARTE
+            </p>
 
-          <h2 className="font-serif text-4xl md:text-6xl mb-6">
-            Pratos em destaque
-          </h2>
+            <h2 className="font-serif text-4xl leading-tight text-[#121212] md:text-6xl">
+              O Menu    
+            </h2>
+          </div>
 
-          <p className="text-black/60 leading-relaxed">
-            Uma seleção inspirada nos sabores portugueses, reinterpretada com
-            técnica, detalhe e apresentação contemporânea.
-          </p>
-        </div>
+          <a
+            href="/menu"
+            className="group inline-flex w-fit items-center gap-3 text-xs uppercase tracking-[0.28em] text-[#121212]"
+          >
+            Ver menu completo
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {dishes.map((dish) => (
-            <article
-              key={dish.name}
-              className="group bg-[#FAF9F6] border border-black/10 overflow-hidden hover:shadow-2xl transition duration-500"
-            >
-              <div className="h-72 overflow-hidden">
-                <img
-                  src={dish.image}
-                  alt={dish.name}
-                  className="h-full w-full object-cover group-hover:scale-105 transition duration-700"
-                />
-              </div>
+            <ArrowUpRight
+              size={17}
+              className="transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+            />
+          </a>
+        </motion.header>
 
-              <div className="p-8">
-                <p className="text-[#B08D57] text-xs uppercase tracking-[0.25em] mb-3">
-                  {dish.category}
-                </p>
+        <div className="grid gap-10 lg:grid-cols-[1.35fr_0.65fr] lg:gap-8">
+          <motion.article
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.85 }}
+            className="group"
+          >
+            <div className="mb-7 h-[420px] overflow-hidden bg-[#F2EFE9] md:h-[620px]">
+              <img
+                src={mainDish.image}
+                alt={mainDish.name}
+                className="h-full w-full object-cover transition duration-[1400ms] group-hover:scale-[1.035]"
+              />
+            </div>
 
-                <div className="flex justify-between gap-4 mb-4">
-                  <h3 className="font-serif text-2xl">{dish.name}</h3>
-                  <span className="text-[#B08D57] font-serif text-2xl">
-                    {dish.price}
-                  </span>
+            <DishInformation dish={mainDish} />
+          </motion.article>
+
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-1">
+            {secondaryDishes.map((dish, index) => (
+              <motion.article
+                key={dish.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.12,
+                }}
+                className="group"
+              >
+                <div className="mb-6 h-[280px] overflow-hidden bg-[#F2EFE9] lg:h-[264px]">
+                  <img
+                    src={dish.image}
+                    alt={dish.name}
+                    className="h-full w-full object-cover transition duration-[1400ms] group-hover:scale-[1.04]"
+                  />
                 </div>
 
-                <p className="text-black/60 leading-relaxed">{dish.desc}</p>
-              </div>
-            </article>
-          ))}
+                <DishInformation dish={dish} />
+              </motion.article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
