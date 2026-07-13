@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { featuredDishes } from "../data/dishes";
+import { Link } from "react-router-dom";
+
 
 function DishInformation({ dish }) {
   return (
@@ -49,17 +51,17 @@ function MenuSection() {
             </h2>
           </div>
 
-          <a
-            href="/menu"
-            className="group inline-flex w-fit items-center gap-3 text-xs uppercase tracking-[0.28em] text-[#121212]"
-          >
-            Ver menu completo
+            <Link
+  to="/menu"
+  className="group inline-flex w-fit items-center gap-3 text-xs uppercase tracking-[0.28em] text-[#121212]"
+>
+  Ver menu completo
 
-            <ArrowUpRight
-              size={17}
-              className="transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-            />
-          </a>
+  <ArrowUpRight
+    size={17}
+    className="transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+  />
+            </Link>
         </motion.header>
 
         <div className="grid gap-10 lg:grid-cols-[1.35fr_0.65fr] lg:gap-8">
