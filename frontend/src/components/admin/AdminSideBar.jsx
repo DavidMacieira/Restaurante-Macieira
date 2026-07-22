@@ -11,13 +11,41 @@ import {
 import { NavLink } from "react-router-dom";
 
 const menuItems = [
-  { label: "Dashboard", icon: LayoutDashboard, active: true },
-  { label: "Reservas", icon: CalendarDays },
-  { label: "Menu", icon: UtensilsCrossed, path: "/admin/menu" },
-  { label: "Categorias", icon: Tags },
-  { label: "Galeria", icon: Images },
-  { label: "Utilizadores", icon: Users },
-  { label: "Definições", icon: Settings },
+  {
+    label: "Dashboard",
+    icon: LayoutDashboard,
+    path: "/admin",
+  },
+  {
+    label: "Reservas",
+    icon: CalendarDays,
+    path: "/admin/reservas",
+  },
+  {
+    label: "Menu",
+    icon: UtensilsCrossed,
+    path: "/admin/menu",
+  },
+  {
+    label: "Categorias",
+    icon: Tags,
+    path: "/admin/categorias",
+  },
+  {
+    label: "Galeria",
+    icon: Images,
+    path: "/admin/galeria",
+  },
+  {
+    label: "Utilizadores",
+    icon: Users,
+    path: "/admin/utilizadores",
+  },
+  {
+    label: "Definições",
+    icon: Settings,
+    path: "/admin/definicoes",
+  },
 ];
 
 function AdminSidebar() {

@@ -110,7 +110,10 @@ function AdminMenuPage() {
         <AdminSidebar />
 
         <div className="min-w-0 flex-1">
-          <AdminHeader />
+          <AdminHeader
+  title="Gestão do Menu"
+  subtitle="Administração dos pratos e respetiva disponibilidade"
+/>
 
           <main className="px-5 py-7 md:px-8 md:py-8">
             <div className="mx-auto max-w-7xl">

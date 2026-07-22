@@ -1,6 +1,9 @@
 import { Bell, Menu, Search } from "lucide-react";
 
-function AdminHeader() {
+function AdminHeader({
+  title = "Dashboard",
+  subtitle = "Resumo da atividade do restaurante",
+}) {
   return (
     <header className="flex min-h-20 items-center justify-between border-b border-slate-200 bg-white px-5 md:px-8">
       <div className="flex items-center gap-4">
@@ -14,11 +17,11 @@ function AdminHeader() {
 
         <div>
           <h1 className="text-xl font-semibold text-slate-900 md:text-2xl">
-            Dashboard
+            {title}
           </h1>
 
           <p className="mt-1 hidden text-sm text-slate-500 sm:block">
-            Resumo da atividade do restaurante
+            {subtitle}
           </p>
         </div>
       </div>
@@ -44,7 +47,7 @@ function AdminHeader() {
           <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-red-500" />
         </button>
 
-        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#2563EB] text-sm font-semibold text-white">
+        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-600 text-sm font-semibold text-white">
           DM
         </div>
       </div>
