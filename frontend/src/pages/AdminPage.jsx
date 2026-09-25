@@ -7,7 +7,7 @@ import {
   Plus,
 } from "lucide-react";
 
-import AdminSidebar from "../components/admin/AdminSidebar";
+import AdminSidebar from "../components/admin/AdminSideBar";
 import AdminHeader from "../components/admin/AdminHeader";
 import StatCard from "../components/admin/StatCard";
 

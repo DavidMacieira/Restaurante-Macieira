@@ -10,7 +10,7 @@ import {
   XCircle,
 } from "lucide-react";
 
-import AdminSidebar from "../components/admin/AdminSidebar";
+import AdminSidebar from "../components/admin/AdminSideBar";
 import AdminHeader from "../components/admin/AdminHeader";
 import ReservationDetailsModal from "../components/admin/ReservationDetailsModal";
 import initialReservations from "../data/adminReservations";

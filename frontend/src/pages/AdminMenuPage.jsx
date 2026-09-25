@@ -9,7 +9,7 @@ import {
   X,
 } from "lucide-react";
 
-import AdminSidebar from "../components/admin/AdminSidebar";
+import AdminSidebar from "../components/admin/AdminSideBar";
 import AdminHeader from "../components/admin/AdminHeader";
 import DishModal from "../components/admin/DishModal";
 import initialDishes from "../data/adminDishes";

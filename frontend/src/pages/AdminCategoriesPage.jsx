@@ -8,7 +8,7 @@ import {
   UtensilsCrossed,
 } from "lucide-react";
 
-import AdminSidebar from "../components/admin/AdminSidebar";
+import AdminSidebar from "../components/admin/AdminSideBar";
 import AdminHeader from "../components/admin/AdminHeader";
 import CategoryModal from "../components/admin/CategoryModal";
 import { initialCategories } from "../data/adminCategories";
