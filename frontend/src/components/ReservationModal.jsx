@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 function ReservationModal({ isOpen, onClose }) {
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
   useEffect(() => {
     if (!isOpen) return;
 
@@ -46,7 +49,7 @@ function ReservationModal({ isOpen, onClose }) {
             <button
               type="button"
               onClick={onClose}
-              aria-label="Fechar reservas"
+              aria-label={isEnglish ? "Close reservation form" : "Fechar reservas"}
               className="absolute right-5 top-5 text-black/45 transition hover:text-[#121212]"
             >
               <X size={24} />
@@ -58,14 +61,14 @@ function ReservationModal({ isOpen, onClose }) {
               </p>
 
               <h2 className="text-center font-serif text-4xl leading-tight sm:text-5xl">
-                Reservar mesa
+                {isEnglish ? "Book a table" : "Reservar mesa"}
               </h2>
 
               <form className="mt-10 grid gap-6">
                 <div className="grid gap-6 sm:grid-cols-2">
                   <label className="grid gap-2">
                     <span className="text-[0.65rem] uppercase tracking-[0.25em] text-black/45">
-                      Nome
+                      {isEnglish ? "Name" : "Nome"}
                     </span>
 
                     <input
@@ -78,7 +81,7 @@ function ReservationModal({ isOpen, onClose }) {
 
                   <label className="grid gap-2">
                     <span className="text-[0.65rem] uppercase tracking-[0.25em] text-black/45">
-                      Telefone
+                      {isEnglish ? "Phone" : "Telefone"}
                     </span>
 
                     <input
@@ -106,7 +109,7 @@ function ReservationModal({ isOpen, onClose }) {
                 <div className="grid gap-6 sm:grid-cols-3">
                   <label className="grid gap-2">
                     <span className="text-[0.65rem] uppercase tracking-[0.25em] text-black/45">
-                      Data
+                      {isEnglish ? "Date" : "Data"}
                     </span>
 
                     <input
@@ -119,7 +122,7 @@ function ReservationModal({ isOpen, onClose }) {
 
                   <label className="grid gap-2">
                     <span className="text-[0.65rem] uppercase tracking-[0.25em] text-black/45">
-                      Hora
+                      {isEnglish ? "Time" : "Hora"}
                     </span>
 
                     <input
@@ -132,7 +135,7 @@ function ReservationModal({ isOpen, onClose }) {
 
                   <label className="grid gap-2">
                     <span className="text-[0.65rem] uppercase tracking-[0.25em] text-black/45">
-                      Pessoas
+                      {isEnglish ? "Guests" : "Pessoas"}
                     </span>
 
                     <select
@@ -141,20 +144,20 @@ function ReservationModal({ isOpen, onClose }) {
                       defaultValue="2"
                       className="border-b border-black/20 bg-transparent px-0 py-3 outline-none transition focus:border-[#B08D57]"
                     >
-                      <option value="1">1 pessoa</option>
-                      <option value="2">2 pessoas</option>
-                      <option value="3">3 pessoas</option>
-                      <option value="4">4 pessoas</option>
-                      <option value="5">5 pessoas</option>
-                      <option value="6">6 pessoas</option>
-                      <option value="7">7+ pessoas</option>
+                      <option value="1">1 {isEnglish ? "guest" : "pessoa"}</option>
+                      <option value="2">2 {isEnglish ? "guests" : "pessoas"}</option>
+                      <option value="3">3 {isEnglish ? "guests" : "pessoas"}</option>
+                      <option value="4">4 {isEnglish ? "guests" : "pessoas"}</option>
+                      <option value="5">5 {isEnglish ? "guests" : "pessoas"}</option>
+                      <option value="6">6 {isEnglish ? "guests" : "pessoas"}</option>
+                      <option value="7">7+ {isEnglish ? "guests" : "pessoas"}</option>
                     </select>
                   </label>
                 </div>
 
                 <label className="grid gap-2">
                   <span className="text-[0.65rem] uppercase tracking-[0.25em] text-black/45">
-                    Observações
+                      {isEnglish ? "Notes" : "Observações"}
                   </span>
 
                   <textarea
@@ -171,12 +174,14 @@ function ReservationModal({ isOpen, onClose }) {
                   <span className="absolute inset-0 -translate-x-full bg-[#121212] transition-transform duration-500 group-hover:translate-x-0" />
 
                   <span className="relative z-10 text-xs uppercase tracking-[0.3em] transition-colors duration-500 group-hover:text-white">
-                    Pedir reserva
+                    {isEnglish ? "Request a reservation" : "Pedir reserva"}
                   </span>
                 </button>
 
                 <p className="text-center text-xs leading-relaxed text-black/40">
-                  O pedido fica sujeito a confirmação.
+                  {isEnglish
+                    ? "Your request is subject to confirmation."
+                    : "O pedido fica sujeito a confirmação."}
                 </p>
               </form>
             </div>

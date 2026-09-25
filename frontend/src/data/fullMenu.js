@@ -2,22 +2,26 @@ export const menuCategories = [
   {
     id: "entradas",
     name: "Entradas",
+    nameEn: "Starters",
     items: [
       {
         id: 1,
         name: "Amêijoas à Bulhão Pato",
+        descriptionEn: "Garlic, coriander and white wine.",
         description: "Alho, coentros e vinho branco.",
         price: "16€",
       },
       {
         id: 2,
         name: "Tártaro de Novilho",
+        descriptionEn: "Cured egg yolk, wholegrain mustard and toasted bread.",
         description: "Gema curada, mostarda antiga e pão tostado.",
         price: "18€",
       },
       {
         id: 3,
         name: "Croquete de Vitela",
+        descriptionEn: "Port wine mustard.",
         description: "Mostarda de vinho do Porto.",
         price: "9€",
       },
@@ -26,22 +30,26 @@ export const menuCategories = [
   {
     id: "peixe",
     name: "Peixe",
+    nameEn: "Fish",
     items: [
       {
         id: 4,
         name: "Bacalhau Macieira",
+        descriptionEn: "Chickpeas, cornbread and herb-infused olive oil.",
         description: "Grão, broa e azeite de ervas.",
         price: "38€",
       },
       {
         id: 5,
         name: "Polvo à Brasa",
+        descriptionEn: "Crushed potatoes and roasted pepper.",
         description: "Batata a murro e pimento assado.",
         price: "42€",
       },
       {
         id: 6,
         name: "Robalo da Costa",
+        descriptionEn: "Creamy lemon and herb rice.",
         description: "Arroz cremoso de limão e ervas.",
         price: "36€",
       },
@@ -50,22 +58,26 @@ export const menuCategories = [
   {
     id: "carne",
     name: "Carne",
+    nameEn: "Meat",
     items: [
       {
         id: 7,
         name: "Novilho Maturado",
+        descriptionEn: "Port wine and seasonal vegetables.",
         description: "Vinho do Porto e legumes da estação.",
         price: "55€",
       },
       {
         id: 8,
         name: "Pato Confitado",
+        descriptionEn: "Smoked carrot and orange sauce.",
         description: "Cenoura fumada e molho de laranja.",
         price: "39€",
       },
       {
         id: 9,
         name: "Borrego",
+        descriptionEn: "Sweet potato and rosemary jus.",
         description: "Batata doce e jus de alecrim.",
         price: "44€",
       },
@@ -74,22 +86,26 @@ export const menuCategories = [
   {
     id: "sobremesas",
     name: "Sobremesas",
+    nameEn: "Desserts",
     items: [
       {
         id: 10,
         name: "Pera Rocha",
+        descriptionEn: "Port wine and spices.",
         description: "Vinho do Porto e especiarias.",
         price: "14€",
       },
       {
         id: 11,
         name: "Pastel de Nata",
+        descriptionEn: "Cinnamon, lemon and vanilla ice cream.",
         description: "Canela, limão e gelado de baunilha.",
         price: "13€",
       },
       {
         id: 12,
         name: "Chocolate Negro",
+        descriptionEn: "Olive oil, fleur de sel and almond.",
         description: "Azeite, flor de sal e amêndoa.",
         price: "15€",
       },
@@ -98,23 +114,27 @@ export const menuCategories = [
   {
     id: "vinhos",
     name: "Vinhos",
+    nameEn: "Wines",
     items: [
       {
         id: 13,
         name: "Douro Branco",
         description: "Copo.",
+        descriptionEn: "By the glass.",
         price: "8€",
       },
       {
         id: 14,
         name: "Dão Tinto",
         description: "Copo.",
+        descriptionEn: "By the glass.",
         price: "9€",
       },
       {
         id: 15,
         name: "Vinho do Porto",
         description: "Copo.",
+        descriptionEn: "By the glass.",
         price: "10€",
       },
     ],

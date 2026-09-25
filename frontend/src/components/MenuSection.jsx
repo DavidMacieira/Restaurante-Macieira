@@ -2,18 +2,21 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { featuredDishes } from "../data/dishes";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 
 function DishInformation({ dish }) {
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
   return (
     <div>
       <p className="mb-3 text-[0.65rem] uppercase tracking-[0.35em] text-[#B08D57]">
-        {dish.category}
+        {isEnglish ? dish.categoryEn : dish.category}
       </p>
 
       <div className="flex items-start justify-between gap-6">
         <h3 className="font-serif text-3xl leading-tight text-[#121212]">
-          {dish.name}
+          {isEnglish ? dish.nameEn : dish.name}
         </h3>
 
         <span className="shrink-0 font-serif text-2xl text-[#B08D57]">
@@ -22,13 +25,15 @@ function DishInformation({ dish }) {
       </div>
 
       <p className="mt-4 max-w-md leading-relaxed text-black/55">
-        {dish.description}
+        {isEnglish ? dish.descriptionEn : dish.description}
       </p>
     </div>
   );
 }
 
 function MenuSection() {
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
   const [mainDish, ...secondaryDishes] = featuredDishes;
 
   return (
@@ -47,7 +52,7 @@ function MenuSection() {
             </p>
 
             <h2 className="font-serif text-4xl leading-tight text-[#121212] md:text-6xl">
-              O Menu    
+              {isEnglish ? "The Menu" : "O Menu"}
             </h2>
           </div>
 
@@ -55,7 +60,7 @@ function MenuSection() {
   to="/menu"
   className="group inline-flex w-fit items-center gap-3 text-xs uppercase tracking-[0.28em] text-[#121212]"
 >
-  Ver menu completo
+  {isEnglish ? "View full menu" : "Ver menu completo"}
 
   <ArrowUpRight
     size={17}

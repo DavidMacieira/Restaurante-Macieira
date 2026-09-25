@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState("PT");
+  const { language, setLanguage } = useLanguage();
+  const isEnglish = language === "EN";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 60);
@@ -16,10 +18,10 @@ function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Experiência", href: "#experiencia" },
+    { label: isEnglish ? "Experience" : "Experiência", href: "#experiencia" },
     { label: "Menu", href: "#menu" },
-    { label: "Galeria", href: "#galeria" },
-    { label: "Reservas", href: "#reservas" },
+    { label: isEnglish ? "Gallery" : "Galeria", href: "#galeria" },
+    { label: isEnglish ? "Reservations" : "Reservas", href: "#reservas" },
   ];
 
   return (
@@ -70,6 +72,8 @@ function Navbar() {
                 language === "PT" ? "scale-110" : "opacity-45 hover:opacity-100"
               }`}
               title="Português"
+              aria-label="Português"
+              aria-pressed={language === "PT"}
             >
               <span className="fi fi-pt text-xl rounded-sm"></span>
             </button>
@@ -80,6 +84,8 @@ function Navbar() {
                 language === "EN" ? "scale-110" : "opacity-45 hover:opacity-100"
               }`}
               title="English"
+              aria-label="English"
+              aria-pressed={isEnglish}
             >
               <span className="fi fi-gb text-xl rounded-sm"></span>
             </button>
@@ -90,7 +96,7 @@ function Navbar() {
             className={`lg:hidden transition ${
               isScrolled ? "text-[#121212]" : "text-white"
             }`}
-            aria-label="Abrir menu"
+            aria-label={isEnglish ? "Open menu" : "Abrir menu"}
           >
             {isOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -112,11 +118,21 @@ function Navbar() {
             ))}
 
             <div className="flex gap-4 pt-4">
-              <button onClick={() => setLanguage("PT")}>
+              <button
+                onClick={() => setLanguage("PT")}
+                aria-label="Português"
+                aria-pressed={language === "PT"}
+                className={language === "PT" ? "scale-110" : "opacity-45"}
+              >
                 <span className="fi fi-pt text-xl rounded-sm"></span>
               </button>
 
-              <button onClick={() => setLanguage("EN")}>
+              <button
+                onClick={() => setLanguage("EN")}
+                aria-label="English"
+                aria-pressed={isEnglish}
+                className={isEnglish ? "scale-110" : "opacity-45"}
+              >
                 <span className="fi fi-gb text-xl rounded-sm"></span>
               </button>
             </div>
@@ -126,7 +142,7 @@ function Navbar() {
               onClick={() => setIsOpen(false)}
               className="mt-2 border border-[#121212] px-6 py-4 text-center hover:bg-[#121212] hover:text-white transition"
             >
-              Reservar Mesa
+              {isEnglish ? "Book a Table" : "Reservar Mesa"}
             </a>
           </div>
         </div>

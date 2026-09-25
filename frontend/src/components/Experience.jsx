@@ -2,23 +2,17 @@ import { motion } from "framer-motion";
 import experienceOne from "../assets/images/Experience-01.png";
 import experienceTwo from "../assets/images/Experience-02.png";
 import experienceThree from "../assets/images/Experience-03.png";
-
-const experiences = [
-  {
-    label: "Ambiente",
-    image: experienceOne,
-  },
-  {
-    label: "Ingredientes",
-    image: experienceTwo,
-  },
-  {
-    label: "Detalhe",
-    image: experienceThree,
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 function Experience() {
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
+  const experiences = [
+    { label: isEnglish ? "Atmosphere" : "Ambiente", image: experienceOne },
+    { label: isEnglish ? "Ingredients" : "Ingredientes", image: experienceTwo },
+    { label: isEnglish ? "Detail" : "Detalhe", image: experienceThree },
+  ];
+
   return (
     <section id="experiencia" className="bg-[#FAF9F6] px-6 md:px-10 py-24">
       <div className="max-w-7xl mx-auto">
@@ -30,11 +24,11 @@ function Experience() {
           className="mb-8"
         >
           <p className="text-[#B08D57] uppercase tracking-[0.45em] text-xs mb-5">
-            Descubra
+            {isEnglish ? "Discover" : "Descubra"}
           </p>
 
           <h2 className="font-serif text-4xl md:text-5xl text-[#121212]">
-            A experiência
+            {isEnglish ? "The Experience" : "A experiência"}
           </h2>
         </motion.div>
 

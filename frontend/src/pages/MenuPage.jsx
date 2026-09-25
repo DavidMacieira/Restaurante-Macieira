@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { menuCategories } from "../data/fullMenu";
+import { useLanguage } from "../context/LanguageContext";
 
-function MenuItem({ item }) {
+function MenuItem({ item, isEnglish }) {
   return (
     <article className="border-b border-black/10 py-6 last:border-b-0">
       <div className="flex items-start justify-between gap-5">
@@ -12,7 +13,7 @@ function MenuItem({ item }) {
           </h3>
 
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-black/50">
-            {item.description}
+            {isEnglish ? item.descriptionEn : item.description}
           </p>
         </div>
 
@@ -25,6 +26,9 @@ function MenuItem({ item }) {
 }
 
 function MenuPage() {
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
+
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-[#121212]">
       <header className="border-b border-black/10 bg-[#FAF9F6]/95 px-5 py-5 backdrop-blur md:px-10">
@@ -34,7 +38,7 @@ function MenuPage() {
             className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-black/50 transition hover:text-[#121212]"
           >
             <ArrowLeft size={16} />
-            Voltar
+            {isEnglish ? "Back" : "Voltar"}
           </Link>
 
           <Link
@@ -52,7 +56,7 @@ function MenuPage() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <p className="mb-4 text-[0.65rem] uppercase tracking-[0.4em] text-[#B08D57]">
-              Cozinha Portuguesa
+              {isEnglish ? "Portuguese Cuisine" : "Cozinha Portuguesa"}
             </p>
 
             <h1 className="font-serif text-5xl leading-none sm:text-6xl md:text-7xl">
@@ -62,7 +66,7 @@ function MenuPage() {
 
           <nav
             className="sticky top-0 z-30 -mx-5 mb-14 overflow-x-auto border-y border-black/10 bg-[#FAF9F6]/95 px-5 backdrop-blur md:-mx-10 md:px-10"
-            aria-label="Categorias do menu"
+            aria-label={isEnglish ? "Menu categories" : "Categorias do menu"}
           >
             <div className="mx-auto flex w-max min-w-full max-w-4xl items-center gap-8 py-5">
               {menuCategories.map((category) => (
@@ -71,7 +75,7 @@ function MenuPage() {
                   href={`#${category.id}`}
                   className="shrink-0 text-[0.65rem] uppercase tracking-[0.25em] text-black/45 transition hover:text-[#B08D57]"
                 >
-                  {category.name}
+                  {isEnglish ? category.nameEn : category.name}
                 </a>
               ))}
             </div>
@@ -86,17 +90,17 @@ function MenuPage() {
               >
                 <div className="mb-3 flex items-end justify-between border-b border-black/20 pb-5">
                   <h2 className="font-serif text-3xl sm:text-4xl">
-                    {category.name}
+                    {isEnglish ? category.nameEn : category.name}
                   </h2>
 
                   <span className="text-[0.6rem] uppercase tracking-[0.25em] text-black/30">
-                    {category.items.length} opções
+                    {category.items.length} {isEnglish ? "options" : "opções"}
                   </span>
                 </div>
 
                 <div>
                   {category.items.map((item) => (
-                    <MenuItem key={item.id} item={item} />
+                    <MenuItem key={item.id} item={item} isEnglish={isEnglish} />
                   ))}
                 </div>
               </section>
@@ -105,14 +109,16 @@ function MenuPage() {
 
           <div className="mt-20 border-t border-black/10 pt-8 text-center">
             <p className="text-xs leading-relaxed text-black/40">
-              Informe a nossa equipa sobre alergias ou restrições alimentares.
+              {isEnglish
+                ? "Please inform our team of any allergies or dietary restrictions."
+                : "Informe a nossa equipa sobre alergias ou restrições alimentares."}
             </p>
 
             <Link
               to="/"
               className="mt-6 inline-block text-[0.65rem] uppercase tracking-[0.28em] text-black/50 transition hover:text-[#B08D57]"
             >
-              Voltar à página inicial
+              {isEnglish ? "Back to home" : "Voltar à página inicial"}
             </Link>
           </div>
         </div>

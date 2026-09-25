@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import logo from "../assets/images/logotipo.png";
+import { useLanguage } from "../context/LanguageContext";
 
 function Footer() {
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
   return (
     <footer className="bg-[#FAF9F6] px-6 py-14 text-[#121212] md:px-10 md:py-16">
       <motion.div
@@ -13,7 +16,7 @@ function Footer() {
       >
         <img
           src={logo}
-          alt="Logótipo Macieira"
+          alt={isEnglish ? "Macieira logo" : "Logótipo Macieira"}
           className="h-28 w-28 object-contain"
         />
 

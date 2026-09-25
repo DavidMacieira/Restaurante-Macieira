@@ -4,9 +4,12 @@ import { ArrowUpRight } from "lucide-react";
 
 import reservationImage from "../assets/images/reservas.png";
 import ReservationModal from "./ReservationModal";
+import { useLanguage } from "../context/LanguageContext";
 
 function Reservation() {
   const [isReservationOpen, setIsReservationOpen] = useState(false);
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
 
   return (
     <>
@@ -25,13 +28,13 @@ function Reservation() {
               className="flex flex-col justify-center px-8 py-20 sm:px-14 lg:px-20"
             >
               <p className="mb-7 text-xs uppercase tracking-[0.45em] text-[#B08D57]">
-                Reservas
+                {isEnglish ? "Reservations" : "Reservas"}
               </p>
 
               <h2 className="max-w-xl font-serif text-5xl leading-[1.02] text-[#121212] md:text-7xl">
-                Uma mesa
+                {isEnglish ? "A table" : "Uma mesa"}
                 <br />
-                espera por si.
+                {isEnglish ? "is waiting for you." : "espera por si."}
               </h2>
 
               <div className="mt-12">
@@ -43,7 +46,7 @@ function Reservation() {
                   <span className="absolute inset-0 -translate-x-full bg-[#121212] transition-transform duration-500 ease-out group-hover:translate-x-0" />
 
                   <span className="relative z-10 text-xs uppercase tracking-[0.28em] text-[#121212] transition-colors duration-500 group-hover:text-white">
-                    Reservar mesa
+                    {isEnglish ? "Book a table" : "Reservar mesa"}
                   </span>
 
                   <ArrowUpRight
@@ -54,7 +57,7 @@ function Reservation() {
               </div>
 
               <div className="mt-16 flex flex-wrap gap-x-10 gap-y-5 border-t border-black/10 pt-8 text-[0.65rem] uppercase tracking-[0.28em] text-black/45">
-                <span>Terça a Domingo</span>
+                <span>{isEnglish ? "Tuesday to Sunday" : "Terça a Domingo"}</span>
                 <span>19:00 — 23:30</span>
               </div>
             </motion.div>
@@ -69,7 +72,7 @@ function Reservation() {
             >
               <img
                 src={reservationImage}
-                alt="Mesa preparada no restaurante Macieira"
+                alt={isEnglish ? "Table set at Macieira restaurant" : "Mesa preparada no restaurante Macieira"}
                 className="absolute inset-0 h-full w-full object-cover transition duration-[1800ms] group-hover:scale-[1.035]"
               />
 

@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import heroImage from "../assets/images/hero.avif";
+import { useLanguage } from "../context/LanguageContext";
 
 function Hero() {
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[#121212]">
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Interior elegante do restaurante Macieira"
+          alt={isEnglish ? "Elegant interior of Macieira restaurant" : "Interior elegante do restaurante Macieira"}
           className="w-full h-full object-cover"
         />
 
@@ -28,32 +31,33 @@ function Hero() {
           className="max-w-2xl"
         >
           <p className="text-[#B08D57] uppercase tracking-[0.45em] text-xs mb-6">
-            Fine Dining Português
+            {isEnglish ? "Portuguese Fine Dining" : "Fine Dining Português"}
           </p>
 
           <h1 className="font-serif text-white text-5xl md:text-6xl lg:text-7xl leading-[1.02] mb-8">
-            A essência de Portugal,
+            {isEnglish ? "The essence of Portugal," : "A essência de Portugal,"}
             <br />
-            servida com elegância.
+            {isEnglish ? "served with elegance." : "servida com elegância."}
           </h1>
 
           <p className="max-w-xl text-white/72 text-base md:text-lg leading-relaxed mb-10">
-            Uma experiência gastronómica contemporânea inspirada na tradição
-            portuguesa.
+            {isEnglish
+              ? "A contemporary dining experience inspired by Portuguese tradition."
+              : "Uma experiência gastronómica contemporânea inspirada na tradição portuguesa."}
           </p>
 
           <a
             href="#reservas"
             className="inline-flex bg-[#FAF9F6] text-[#121212] px-9 py-4 text-xs uppercase tracking-[0.28em] hover:bg-[#B08D57] hover:text-white transition duration-300"
           >
-            Reservar Mesa
+            {isEnglish ? "Book a Table" : "Reservar Mesa"}
           </a>
         </motion.div>
 
         <a
           href="#experiencia"
           className="hidden md:flex absolute bottom-10 right-10 flex-col items-center gap-3 text-white/70 hover:text-white transition"
-          aria-label="Explorar"
+          aria-label={isEnglish ? "Explore" : "Explorar"}
         >
           <ArrowDown size={24} className="animate-bounce" />
         </a>

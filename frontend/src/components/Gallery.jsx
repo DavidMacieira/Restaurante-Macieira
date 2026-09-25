@@ -8,48 +8,57 @@ import galleryThree from "../assets/images/gallery-03.png";
 import galleryFour from "../assets/images/gallery-04.png";
 import galleryFive from "../assets/images/gallery-05.png";
 import gallerySix from "../assets/images/gallery-06.png";
+import { useLanguage } from "../context/LanguageContext";
 
 const galleryImages = [
   {
     id: 1,
     src: galleryOne,
     alt: "Sala do restaurante Macieira",
+    altEn: "Restaurant room at Macieira",
     className: "md:col-span-2 md:row-span-2",
   },
   {
     id: 2,
     src: galleryTwo,
     alt: "Prato português contemporâneo",
+    altEn: "Contemporary Portuguese dish",
     className: "",
   },
   {
     id: 3,
     src: galleryThree,
     alt: "Detalhe de mesa",
+    altEn: "Table detail",
     className: "",
   },
   {
     id: 4,
     src: galleryFour,
     alt: "Chef a finalizar um prato",
+    altEn: "Chef finishing a dish",
     className: "",
   },
   {
     id: 5,
     src: galleryFive,
     alt: "Ambiente intimista",
+    altEn: "Intimate atmosphere",
     className: "",
   },
   {
     id: 6,
     src: gallerySix,
     alt: "Vinho servido no Macieira",
+    altEn: "Wine served at Macieira",
     className: "md:col-span-2",
   },
 ];
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const { language } = useLanguage();
+  const isEnglish = language === "EN";
 
   return (
     <>
@@ -66,7 +75,7 @@ function Gallery() {
             className="mb-12 border-b border-black/10 pb-8"
           >
             <h2 className="font-serif text-5xl leading-none text-[#121212] md:text-7xl">
-              Galeria
+              {isEnglish ? "Gallery" : "Galeria"}
             </h2>
           </motion.header>
 
@@ -84,11 +93,11 @@ function Gallery() {
                   delay: index * 0.08,
                 }}
                 className={`group relative overflow-hidden bg-[#121212] text-left ${image.className}`}
-                aria-label={`Abrir imagem: ${image.alt}`}
+                aria-label={`${isEnglish ? "Open image" : "Abrir imagem"}: ${isEnglish ? image.altEn : image.alt}`}
               >
                 <img
                   src={image.src}
-                  alt={image.alt}
+                  alt={isEnglish ? image.altEn : image.alt}
                   className="h-full w-full object-cover transition duration-[1400ms] group-hover:scale-[1.04]"
                 />
 
@@ -96,7 +105,7 @@ function Gallery() {
 
                 <div className="absolute inset-x-0 bottom-0 translate-y-4 p-6 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                   <span className="text-[0.65rem] uppercase tracking-[0.35em] text-white">
-                    Ver fotografia
+                    {isEnglish ? "View photo" : "Ver fotografia"}
                   </span>
                 </div>
               </motion.button>
@@ -118,7 +127,7 @@ function Gallery() {
               type="button"
               onClick={() => setSelectedImage(null)}
               className="absolute right-6 top-6 text-white/75 transition hover:text-white"
-              aria-label="Fechar imagem"
+              aria-label={isEnglish ? "Close image" : "Fechar imagem"}
             >
               <X size={30} />
             </button>
@@ -129,7 +138,7 @@ function Gallery() {
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.35 }}
               src={selectedImage.src}
-              alt={selectedImage.alt}
+              alt={isEnglish ? selectedImage.altEn : selectedImage.alt}
               onClick={(event) => event.stopPropagation()}
               className="max-h-[88vh] max-w-[92vw] object-contain"
             />
