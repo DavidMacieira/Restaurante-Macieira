@@ -1,4 +1,4 @@
-# Macieira | Apresentação para LinkedIn
+# Macieira | Website de um restaurante
 
 ## Descrição para a secção "Projetos"
 
